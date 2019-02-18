@@ -9,15 +9,19 @@
 
     <android.support.v7.widget.GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="213dp"
-        android:layout_height="282dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="88dp"
         app:columnCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/percentsign">
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363">
 
         <ImageButton
             android:id="@+id/one"
@@ -108,57 +112,62 @@
         android:id="@+id/numOfPeople"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/androidGreen"
         android:ems="10"
         android:focusable="false"
         android:inputType="number"
         android:textColor="@color/androidGreen"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textNumOfPeople"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/billTotal"
-        android:layout_width="190dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="192dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/androidGreen"
         android:ems="10"
+        android:focusable="false"
         android:inputType="number"
         android:textColor="@color/androidGreen"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toEndOf="@+id/textBillAmount"
         app:layout_constraintTop_toBottomOf="@+id/numOfPeople"
-        android:focusable="false"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textNumOfPeople"
         android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:text="Enter Number Of People:"
         android:textColor="@color/androidGreen"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/numOfPeople"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textBillAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="159dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:text="Enter Bill Amount:"
         android:textColor="@color/androidGreen"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/billTotal"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNumOfPeople" />
 
@@ -167,14 +176,13 @@
         android:layout_width="wrap_content"
         android:layout_height="181dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="60dp"
         android:checkedButton="@+id/twentyPercent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/billTotal"
-        >
+        app:layout_constraintHorizontal_bias="0.213"
+        app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
             android:id="@+id/fivePercent"
@@ -185,7 +193,7 @@
             android:scaleY="0.5"
             android:text="%5"
             android:textColor="@color/androidGreen"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <RadioButton
             android:id="@+id/tenPercent"
@@ -232,117 +240,125 @@
             android:text="Other"
             android:textColor="@color/androidGreen"
             android:textSize="30sp" />
+
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="92dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="8dp"
         android:text="Select Tip Percentage:"
         android:textColor="@color/androidGreen"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textBillAmount"
+        app:layout_constraintVertical_bias="0.111" />
 
     <Button
         android:id="@+id/calculateTip"
         android:layout_width="218dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/androidGreen"
         android:text="Calculate Tip"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/androidHead"
+        app:layout_constraintVertical_bias="0.826" />
 
     <ImageView
         android:id="@+id/androidHead"
-        android:layout_width="49dp"
-        android:layout_height="28dp"
+        android:layout_width="52dp"
+        android:layout_height="27dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.017"
         app:srcCompat="@drawable/android" />
 
     <ImageView
         android:id="@+id/android2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="69dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.423"
+        app:srcCompat="@drawable/androidbody" />
+
+    <ImageView
+        android:id="@+id/android1"
+        android:layout_width="71dp"
+        android:layout_height="68dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.403"
-        app:srcCompat="@drawable/androidbody" />
-
-    <ImageView
-        android:id="@+id/android1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/billTotal"
-        app:layout_constraintVertical_bias="0.522"
+        app:layout_constraintVertical_bias="0.549"
         app:srcCompat="@drawable/androidbody" />
 
     <TextView
         android:id="@+id/percentsign"
-        android:layout_width="16dp"
-        android:layout_height="25dp"
+        android:layout_width="14dp"
+        android:layout_height="26dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="%"
         android:textColor="@color/androidGreen"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/otherPercentage"
+        app:layout_constraintHorizontal_bias="0.992"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.578" />
 
     <EditText
         android:id="@+id/otherPercentage"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
+        android:layout_width="47dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/androidGreen"
         android:ems="10"
         android:inputType="number"
         android:textColor="@color/androidGreen"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/percentsign"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calculateTip"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
