@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -49,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         final Button calculateTip = (Button) findViewById(R.id.calculateTip);
         final EditText numberOfPeople = (EditText) findViewById(R.id.numOfPeople);
         final EditText billTotal = (EditText) findViewById(R.id.billTotal);
+        final EditText otherPercentage = (EditText) findViewById(R.id.otherPercentage);
 
 
 
@@ -253,62 +252,60 @@ public class MainActivity extends AppCompatActivity {
                 RadioGroup tipPercentage = (RadioGroup) findViewById(R.id.radioGroup);
                 int radioButtonID = tipPercentage.getCheckedRadioButtonId();
                 RadioButton percentageSelected = (RadioButton) findViewById(radioButtonID);
-                EditText otherPercentage = (EditText) findViewById(R.id.otherPercentage);
                 String tipAmount = "0";
 
-                if(otherRadioButtonClicked == radioButtonID){
+                Log.d("DEBUG: ", billTotal.getText().toString());
+                Log.d("DEBUG: ", String.valueOf(billTotal.getText().length()));
+
+                if (billTotal.getText().length() != 0 || numberOfPeople.getText().length() != 0) {
+
+                    if (otherRadioButtonClicked == radioButtonID) {
 
 
-                    if ((Float.parseFloat(otherPercentage.getText().toString())) < 1){
+                        if ((Float.parseFloat(otherPercentage.getText().toString())) < 1 || "".equals(otherPercentage.getText().toString())) {
 
-                        showErrorAlert("Please enter a percentage higher the one!",otherPercentage.getId());
+                            showErrorAlert("Please enter a percentage higher the one!", otherPercentage.getId());
 
+                        } else {
 
-                    }else {
+                            if ((Float.parseFloat(billTotalString.toString().substring(1)) < 1) || "".equals(billTotalString.toString())) {
+                                showErrorAlert("Please enter a bill amount higher the one!", (int) billTotal.getId());
+                            } else if ((Integer.parseInt(numOfPeopleToString.toString()) < 1) || "".equals(numOfPeopleToString.toString())) {
+                                showErrorAlert("Please enter higher the one!", (int) numberOfPeople.getId());
+                            } else {
+                                Calculator tipCalculator = new Calculator(Integer.parseInt(numOfPeopleToString.toString()),
+                                        Float.parseFloat(billTotalString.toString().substring(1)),
+                                        (Float.parseFloat(otherPercentage.getText().toString()) / 100));
+                                tipAmount = tipCalculator.calculateTip();
 
-                        if ((Float.parseFloat(billTotalString.toString().substring(1)) < 1)) {
+                                Intent displayTip = new Intent(getApplicationContext(), TipDisplayActivity.class);
+                                displayTip.putExtra("tipAmount", tipAmount);
+                                startActivity(displayTip);
+                                Log.d("TIP AMOUNT: ", tipAmount);
+                            }
+
+                        }
+
+                    } else {
+
+                        if ((Float.parseFloat(billTotalString.toString().substring(1)) < 1) || (("".equals(billTotalString.toString())))) {
                             showErrorAlert("Please enter a bill amount higher the one!", (int) billTotal.getId());
-                        }
-                        else if (Integer.parseInt(numOfPeopleToString.toString())<1) {
+                        } else if ((Integer.parseInt(numOfPeopleToString.toString()) < 1) || "".equals(numOfPeopleToString.toString())) {
                             showErrorAlert("Please enter higher the one!", (int) numberOfPeople.getId());
-                        }
-                        else {
+                        } else {
+
                             Calculator tipCalculator = new Calculator(Integer.parseInt(numOfPeopleToString.toString()),
                                     Float.parseFloat(billTotalString.toString().substring(1)),
-                                    (Float.parseFloat(otherPercentage.getText().toString()) / 100));
-                            tipAmount = tipCalculator.calculateTip();
+                                    Float.parseFloat(percentageSelected.getText().toString().replace("%", ".")));
 
+                            tipAmount = tipCalculator.calculateTip();
                             Intent displayTip = new Intent(getApplicationContext(), TipDisplayActivity.class);
                             displayTip.putExtra("tipAmount", tipAmount);
                             startActivity(displayTip);
-                            Log.d("TIP AMOUNT: ",tipAmount);
+                            Log.d("TIP AMOUNT: ", tipAmount);
                         }
-
-                    }
-
-                }
-
-                else{
-                    if ((Float.parseFloat(billTotalString.toString().substring(1)) < 1)) {
-                        showErrorAlert("Please enter a bill amount higher the one!", (int) billTotal.getId());
-                    }
-                    else if (Integer.parseInt(numOfPeopleToString.toString())<1) {
-                        showErrorAlert("Please enter higher the one!", (int) numberOfPeople.getId());
-                    }
-                    else {
-
-                        Calculator tipCalculator = new Calculator(Integer.parseInt(numOfPeopleToString.toString()),
-                                Float.parseFloat(billTotalString.toString().substring(1)),
-                                Float.parseFloat(percentageSelected.getText().toString().replace("%", ".")));
-
-                        tipAmount = tipCalculator.calculateTip();
-                        Intent displayTip = new Intent(getApplicationContext(), TipDisplayActivity.class);
-                        displayTip.putExtra("tipAmount", tipAmount);
-                        startActivity(displayTip);
-                        Log.d("TIP AMOUNT: ",tipAmount);
                     }
                 }
-
             }
         });
 
